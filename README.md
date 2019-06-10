@@ -12,7 +12,7 @@ $ cp vendor/alanchang15/swooleigniter/console.php ./application/
 $ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
 
 ## Usage
-```
+```cmd
 $ php command swoole:http start
 $ php command swoole:http stop
 $ php command swoole:http restart
