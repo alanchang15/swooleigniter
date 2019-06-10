@@ -10,6 +10,12 @@ $ cp vendor/alanchang15/swooleigniter/config/swoole.php ./application/config/
 $ cp vendor/alanchang15/swooleigniter/command ./
 $ cp vendor/alanchang15/swooleigniter/console.php ./application/
 $ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
+```
+
+## Require
+* PHP >= 7.0.0
+* Codeigniter Framwork >= 3.0.4
+* Swoole >= 4.0.0
 
 ## Usage
 ```
@@ -19,6 +25,7 @@ $ php command swoole:http restart
 $ php command swoole:http status
 $ php command swoole:http reload
 $ php command swoole:http auto-reload
+```
 
 ## Nginx Configuration
 ```
@@ -35,9 +42,9 @@ server {
         }
     }
 }
+```
 
 ## Apache Configuration
-
 ```
 <VirtualHost *:80>
     ServerName www.domain.com
@@ -55,3 +62,4 @@ server {
    ProxyPass /static !
    ProxyPass / http://127.0.0.1:9501/
 </VirtualHost>
+```
