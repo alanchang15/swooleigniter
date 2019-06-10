@@ -5,6 +5,14 @@ speed up codeigniter with swoole
 ```
 Open the application/config/autoload.php file and add the item you want loaded to the autoload array. 
 $config['composer_autoload'] = '../vendor/autoload.php'
+
+Open the composer.json add the item.
+    "extra": {
+        "installer-types": ["library"],
+        "installer-paths": {
+            "{$name}/": ["type:library"]
+        }
+    }
 ```
 ## Install
 ```cmd
