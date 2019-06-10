@@ -18,12 +18,12 @@ $ composer require alanchang15/swooleigniter
 
 ## Usage
 ```
-$ php command swoole:http start
-$ php command swoole:http stop
-$ php command swoole:http restart
-$ php command swoole:http status
-$ php command swoole:http reload
-$ php command swoole:http auto-reload
+$ php swooleigniter/command swoole:http start
+$ php swooleigniter/command swoole:http stop
+$ php swooleigniter/command swoole:http restart
+$ php swooleigniter/command swoole:http status
+$ php swooleigniter/command swoole:http reload
+$ php swooleigniter/command swoole:http auto-reload
 ```
 
 ## Nginx Configuration
