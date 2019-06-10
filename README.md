@@ -13,6 +13,7 @@ $ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
 
 ## Usage
 ```
+
 $ php command swoole:http start
 $ php command swoole:http stop
 $ php command swoole:http restart
@@ -35,6 +36,7 @@ server {
         }
     }
 }
+
 ## Apache Configuration
 ```
 <VirtualHost *:80>
