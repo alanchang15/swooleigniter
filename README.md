@@ -19,7 +19,7 @@ $ php command swoole:http restart
 $ php command swoole:http status
 $ php command swoole:http reload
 $ php command swoole:http auto-reload
-```
+
 ## Nginx Configuration
 ```
 server {
@@ -35,7 +35,7 @@ server {
         }
     }
 }
-```
+
 ## Apache Configuration
 
 ```
