@@ -13,14 +13,13 @@ $ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
 
 ## Usage
 ```
-
 $ php command swoole:http start
 $ php command swoole:http stop
 $ php command swoole:http restart
 $ php command swoole:http status
 $ php command swoole:http reload
 $ php command swoole:http auto-reload
-
+```
 ## Nginx Configuration
 ```
 server {
@@ -36,8 +35,9 @@ server {
         }
     }
 }
-
+```
 ## Apache Configuration
+
 ```
 <VirtualHost *:80>
     ServerName www.domain.com
