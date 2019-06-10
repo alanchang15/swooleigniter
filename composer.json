@@ -1,0 +1,27 @@
+{
+    "name": "alanchang15/swooleigniter",
+    "description": "speed up codeigniter with codeigniter",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Alan Chang",
+            "email": "alanchang15@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "requre": {
+        "php": ">=7.0.0",
+        "ext-swoole": ">=4.0.0",
+        "symfony/console": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "CI\\": "src"
+        }
+    },
+    "extra": {
+        "installer-name": "swooleigniter"
+    }
+}
