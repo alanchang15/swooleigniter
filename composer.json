@@ -1,6 +1,6 @@
 {
     "name": "alanchang15/swooleigniter",
-    "description": "speed up codeigniter with codeigniter",
+    "description": "speed up codeigniter with swoole",
     "type": "ci-extension",
     "license": "MIT",
     "authors": [
