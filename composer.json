@@ -3,14 +3,14 @@
     "description": "speed up codeigniter with codeigniter",
     "type": "library",
     "license": "MIT",
-    "version": "1.0",
     "authors": [
         {
             "name": "Alan Chang",
             "email": "alanchang15@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "requre": {
         "php": ">=7.0.0",
         "ext-swoole": ">=4.0.0",
