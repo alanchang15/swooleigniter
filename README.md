@@ -11,6 +11,11 @@ $ cp vendor/alanchang15/swooleigniter/command ./
 $ cp vendor/alanchang15/swooleigniter/console.php ./application/
 $ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
 ```
+## Codeigniter Composer Configuration
+```
+Open the application/config/autoload.php file and add the item you want loaded to the autoload array. 
+$config['composer_autoload'] = 'vendor/autoload.php'
+```
 
 ## Require
 * PHP >= 7.0.0
