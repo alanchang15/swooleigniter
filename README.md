@@ -10,10 +10,6 @@ $config['composer_autoload'] = '../vendor/autoload.php'
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
 $ composer require alanchang15/swooleigniter
-$ cp vendor/alanchang15/swooleigniter/config/swoole.php ./application/config/
-$ cp vendor/alanchang15/swooleigniter/command ./
-$ cp vendor/alanchang15/swooleigniter/console.php ./application/
-$ cp vendor/alanchang15/swooleigniter/swooleigniter.php ./application/
 ```
 ## Require
 * PHP >= 7.0.0
