@@ -81,6 +81,6 @@ server {
    ProxyPass /admin !
    ProxyPass /index.html !
    ProxyPass /static !
-   ProxyPass / http://127.0.0.1:9501/
+   ProxyPass / http://127.0.0.1:1215/
 </VirtualHost>
 ```
