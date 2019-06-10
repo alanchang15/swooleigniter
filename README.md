@@ -8,9 +8,9 @@ $config['composer_autoload'] = '../vendor/autoload.php'
 
 Open the composer.json add the item.
     "extra": {
-        "installer-types": ["library"],
+        "installer-types": ["ci-extension"],
         "installer-paths": {
-            "{$name}/": ["type:library"]
+            "{$name}/": ["ci-extension"]
         }
     }
 ```
@@ -18,7 +18,7 @@ Open the composer.json add the item.
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
 $ composer require oomphinc/composer-installers-extender
-$ composer require alanchang15/swooleigniter
+$ composer require alanchang15/swooleigniter:dev-master
 ```
 ## Require
 * PHP >= 7.0.0
