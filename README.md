@@ -57,9 +57,16 @@ server {
         Require all granted
     </Directory>
 
-   ProxyPass /admin !
-   ProxyPass /index.html !
-   ProxyPass /static !
-   ProxyPass / http://127.0.0.1:9501/
+   \#ProxyPass /admin !
+   \#ProxyPass /index.html !
+   \#ProxyPass /static !
+   \#ProxyPass / http://127.0.0.1:9501/
+   
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+        RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ http://127.0.0.1:1215$1 [L,P]
+    </IfModule>   
 </VirtualHost>
 ```
