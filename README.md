@@ -56,17 +56,29 @@ server {
         AllowOverride None
         Require all granted
     </Directory>
-
-   \#ProxyPass /admin !
-   \#ProxyPass /index.html !
-   \#ProxyPass /static !
-   \#ProxyPass / http://127.0.0.1:9501/
-   
+  
     <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
         RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-d
         RewriteRule ^(.*)$ http://127.0.0.1:1215$1 [L,P]
     </IfModule>   
+</VirtualHost>
+### OR
+<VirtualHost *:80>
+    ServerName www.domain.com
+    DocumentRoot /var/www/html
+    DirectoryIndex index.html index.php
+
+    <Directory "/var/www/html">
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+   ProxyPass /admin !
+   ProxyPass /index.html !
+   ProxyPass /static !
+   ProxyPass / http://127.0.0.1:9501/
 </VirtualHost>
 ```
