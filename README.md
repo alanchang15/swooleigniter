@@ -1,5 +1,5 @@
 # swooleigniter
-speed up codeigniter with swoole http server
+speed up codeigniter with swoole
 
 ## Install
 
