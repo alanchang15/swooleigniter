@@ -1,7 +1,7 @@
 {
     "name": "alanchang15/swooleigniter",
     "description": "speed up codeigniter with codeigniter",
-    "type": "codeigniter-components",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
