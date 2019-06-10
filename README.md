@@ -64,7 +64,7 @@ server {
         RewriteRule ^(.*)$ http://127.0.0.1:1215$1 [L,P]
     </IfModule>   
 </VirtualHost>
-### OR
+###### OR
 <VirtualHost *:80>
     ServerName www.domain.com
     DocumentRoot /var/www/html
