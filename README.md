@@ -8,9 +8,9 @@ $config['composer_autoload'] = '../vendor/autoload.php'
 
 Open the composer.json add the item.
     "extra": {
-        "installer-types": ["library"],
+        "installer-types": ["ci-extension"],
         "installer-paths": {
-            "{$name}/": ["type:library"]
+            "{$name}/": ["ci-extension"]
         }
     }
 ```
