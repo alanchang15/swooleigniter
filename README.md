@@ -17,6 +17,7 @@ Open the composer.json add the item.
 ## Install
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
+$ composer require oomphinc/composer-installers-extender
 $ composer require alanchang15/swooleigniter
 ```
 ## Require
