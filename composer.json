@@ -23,6 +23,10 @@
         }
     },
     "extra": {
-        "installer-name": "swooleigniter"
+        "installer-name": "swooleigniter",
+        "installer-types": ["library"],
+        "installer-paths": {
+            "{$name}/": ["type:library"]
+        }
     }
 }
