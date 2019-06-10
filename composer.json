@@ -1,7 +1,7 @@
 {
     "name": "alanchang15/swooleigniter",
     "description": "speed up codeigniter with codeigniter",
-    "type": "library",
+    "type": "codeigniter-components",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,6 @@
     "requre": {
         "php": ">=7.0.0",
         "ext-swoole": ">=4.0.0",
-        "oomphinc/composer-installers-extender": "^1.1",
         "symfony/console": "^4.3"
     },
     "autoload": {
@@ -23,10 +22,6 @@
         }
     },
     "extra": {
-        "installer-name": "swooleigniter",
-        "installer-types": ["library"],
-        "installer-paths": {
-            "{$name}/": ["type:library"]
-        }
+        "installer-name": "swooleigniter"
     }
 }
