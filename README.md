@@ -1,4 +1,4 @@
-# swooleigniter
+# Swooleigniter
 speed up codeigniter with swoole
 
 ## Codeigniter Composer Configuration
