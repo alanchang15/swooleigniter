@@ -9,8 +9,7 @@ $config['composer_autoload'] = '../vendor/autoload.php'
 ```
 ## Install
 ```
-Open the composer.json add the item.
-<code>
+Open the composer.json add the  extra property.
 {
     "extra": {
         "installer-types": ["ci-extension"],
@@ -19,7 +18,7 @@ Open the composer.json add the item.
         }
     }
 }
-</code>
+
 ```
 
 ```cmd
