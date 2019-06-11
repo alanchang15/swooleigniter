@@ -16,6 +16,8 @@ Open the composer.json add the item.
             "{$name}/": ["ci-extension"]
         }
     }
+```
+
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
 $ composer require oomphinc/composer-installers-extender
