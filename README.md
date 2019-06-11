@@ -6,6 +6,9 @@ speed up codeigniter with swoole
 Open the application/config/autoload.php file and add the item you want loaded to the autoload array. 
 $config['composer_autoload'] = '../vendor/autoload.php'
 
+```
+## Install
+```
 Open the composer.json add the item.
     "extra": {
         "installer-types": ["ci-extension"],
@@ -13,8 +16,6 @@ Open the composer.json add the item.
             "{$name}/": ["ci-extension"]
         }
     }
-```
-## Install
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
 $ composer require oomphinc/composer-installers-extender
