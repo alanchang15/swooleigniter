@@ -78,6 +78,11 @@ class Application
             }
             $_SERVER['SERVER_SOFTWARE'] = 'swoole-http-server';
             $_SERVER['HTTP_HOST']       = $this->request->header['host'];
+            if (isset($this->request->header['x-requested-with'])) {
+                $_SERVER['HTTP_X_REQUESTED_WITH'] = $this->request->header['x-requested-with'];
+            } else {
+                $_SERVER['HTTP_X_REQUESTED_WITH'] = '';
+            }            
         }
 
         if (isset($this->request->get)) {
