@@ -1,5 +1,7 @@
 <?php
 
+$_SERVER['HTTP_HOST'] = 'localhost';
+
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 switch (ENVIRONMENT) {
