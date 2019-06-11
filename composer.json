@@ -9,8 +9,6 @@
             "email": "alanchang15@gmail.com"
         }
     ],
-    "minimum-stability": "1.0.0",
-    "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
         "ext-swoole": ">=4.0.0",
