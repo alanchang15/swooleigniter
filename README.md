@@ -10,16 +10,16 @@ $config['composer_autoload'] = '../vendor/autoload.php'
 ## Install
 ```
 Open the composer.json add the item.
+<code>
 {
-<span style="color:red">
     "extra": {
         "installer-types": ["ci-extension"],
         "installer-paths": {
             "{$name}/": ["ci-extension"]
         }
     }
-</span>
 }
+</code>
 ```
 
 ```cmd
