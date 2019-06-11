@@ -48,6 +48,7 @@ server {
     server_name www.domain.com;
 
     location / {
+        fastcgi_param CI_ENV production;
         proxy_http_version 1.1;
         proxy_set_header Connection "keep-alive";
         proxy_set_header X-Real-IP $remote_addr;
