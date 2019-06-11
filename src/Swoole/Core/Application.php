@@ -176,7 +176,11 @@ class Application
                     2 => $method,
                 );
             } else {
-                show_404($RTR->directory . $class . '/' . $method);
+                if (ENVIRONMENT == 'production') {
+                    show_404($RTR->directory . $class . '/' . $method);
+                } else {
+                    throw new \RuntimeException('Controller ' . $class . ' not found.');
+                }
             }
         }
 
