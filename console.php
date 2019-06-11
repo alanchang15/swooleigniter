@@ -179,7 +179,7 @@ if (is_php('5.6')) {
 
 class_alias('CI\Swoole\Core\Controller', 'CI_Controller');
 
-$CI           = new CI\Swoole\Core\Console;
-$CI->composer = $composer;
+$CI                      = new CI\Swoole\Core\Console;
+get_instance()->composer = &$composer;
 
 call_user_func_array([ & $CI, 'command'], [$CFG->item('command')]);

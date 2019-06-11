@@ -76,9 +76,8 @@ class Application
             foreach ($this->request->server as $key => $value) {
                 $_SERVER[strtoupper($key)] = $value;
             }
-            $_SERVER['HTTP_RAW_POST_DATA'] = $this->request->rawContent();
-            $_SERVER['SERVER_SOFTWARE']    = 'swoole-http-server';
-            $_SERVER['HTTP_HOST']          = $this->request->header['host'];
+            $_SERVER['SERVER_SOFTWARE'] = 'swoole-http-server';
+            $_SERVER['HTTP_HOST']       = $this->request->header['host'];
         }
 
         if (isset($this->request->get)) {
@@ -190,11 +189,14 @@ class Application
         // Mark a start point so we can benchmark the controller
         $this->benchmark->mark('controller_execution_time_( ' . $class . ' / ' . $method . ' )_start');
 
+        $request  = $this->request;
         $response = $this->response;
 
         $CI = new $class;
 
         $CI->response = $response;
+
+        $CI->request = $request;
 
         $this->hooks->call_hook('post_controller_constructor');
 

@@ -16,3 +16,19 @@ if (!function_exists('redirect')) {
         exit;
     }
 }
+
+if (!function_exists('request')) {
+    function request()
+    {
+        $app = \CI\Swoole\Core\Application::forge();
+        return $app->request;
+    }
+}
+
+if (!function_exists('response')) {
+    function response()
+    {
+        $app = \CI\Swoole\Core\Application::forge();
+        return $app->response;
+    }
+}
