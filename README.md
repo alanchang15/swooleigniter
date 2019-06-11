@@ -18,7 +18,7 @@ Open the composer.json add the item.
 ```cmd
 $ cd /PATH/TO/CODEIGNITER/PROJECT
 $ composer require oomphinc/composer-installers-extender
-$ composer require alanchang15/swooleigniter:dev-master
+$ composer require alanchang15/swooleigniter
 ```
 ## Require
 * PHP >= 7.0.0
