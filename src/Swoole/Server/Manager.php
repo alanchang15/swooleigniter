@@ -9,7 +9,7 @@ class Manager
 {
     protected static $_server = null;
 
-    protected $_ci;
+    protected $app;
 
     protected $config = [];
 
@@ -74,7 +74,11 @@ class Manager
                 // todo
             };
 
-            $server->on($event, $callback);
+            if ($event == 'request') {
+                $server->on($event, new \CI\Swoole\Core\Session\Middleware($callback));
+            } else {
+                $server->on($event, $callback);
+            }
         }
 
         $server->start();
@@ -95,7 +99,7 @@ class Manager
 
     public function onWorkerStart($server, $worker_id)
     {
-        $this->_ci = CISwooleApplication::reload($server);
+        $this->app = CISwooleApplication::forge()->reload($server);
 
         if ($this->config['request_log_path']) {
             $this->worker_log_file = $this->config['request_log_path'] . date('Y-m-d') . '_' . $worker_id . '.log';
@@ -103,8 +107,6 @@ class Manager
 
         $this->coroutine_num     = 0;
         $this->max_coroutine_num = $this->config['max_coroutine'];
-
-        $this->_ci->hooks->call_hook('on_worker_start');
     }
 
     public function onWorkerStop($server, $worker_id)
@@ -118,10 +120,6 @@ class Manager
         error_reporting(-1);
 
         $request->server['server_name'] = 'swoole-http-server';
-
-        if ($request->server['request_uri'] == '/favicon.ico') {
-            return;
-        }
 
         if ($this->config['stats_uri'] &&
             $request->server['request_uri'] === $this->config['stats_uri']
@@ -140,7 +138,7 @@ class Manager
         //go(function () use ($request, $response) {
         \Swoole\Coroutine::create(function () use ($request, $response) {
             try {
-                $app = CISwooleApplication::forge()
+                $this->app
                     ->setSwooleRequest($request)
                     ->setSwooleResponse($response)
                     ->setGlobal()
@@ -150,9 +148,7 @@ class Manager
             } catch (\Swoole\ExitException $e) {
                 assert($e->getStatus() === 1);
                 assert($e->getFlags() === SWOOLE_EXIT_IN_COROUTINE);
-                // $response->status(500);
-                // $response->end('500 Internal Server Error' . PHP_EOL . $e->getTraceAsString());
-                $this->_ci->server->reload();
+                $this->app->server->reload();
                 return;
             }
             // catch (\Throwable $e) {
@@ -174,17 +170,6 @@ class Manager
         return true;
     }
 
-    protected function content_type($filename)
-    {
-        $result = new \finfo();
-
-        if (is_resource($result) === true) {
-            return $result->file($filename, FILEINFO_MIME_TYPE);
-        }
-
-        return false;
-    }
-
     protected function staticResource($request, $response)
     {
         $public_dir = $this->config['public_dir'];
@@ -200,7 +185,8 @@ class Manager
             } else {
                 $status = 200;
                 $response->status($status);
-                $response->header('Content-Type', $this->content_type($file));
+                $ext = pathinfo($file, PATHINFO_EXTENSION);
+                $response->header('Content-Type', sprintf('text/%s', $ext));
                 $response->sendfile($file);
             }
 

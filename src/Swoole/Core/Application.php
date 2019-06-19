@@ -12,16 +12,20 @@ class Application
 
     private static $_instance = null;
 
-    public static function forge()
+    public static function forge($component = '')
     {
         if (is_null(static::$_instance)) {
             static::$_instance = new static;
         }
 
-        return static::$_instance;
+        if (!empty($component)) {
+            return static::$_instance->{$component};
+        } else {
+            return static::$_instance;
+        }
     }
 
-    public static function reload(SwooleHttpServer $server)
+    public function reload(SwooleHttpServer $server)
     {
         require_once CISWOOLEPATH . 'swooleigniter.php';
 
@@ -32,16 +36,16 @@ class Application
         load_class('Input', 'core');
         load_class('Lang', 'core');
 
-        $CI = new \CI\Swoole\Core\Controller;
+        static::forge()->_ci = new Controller;
 
-        $CI->server = $server;
+        static::forge()->server = $server;
 
-        return $CI;
+        return $this;
     }
 
     private function __construct()
     {
-        $this->_ci = &get_instance();
+        $this->_ci = &Controller::get_instance();
     }
 
     public function __get($component)
@@ -53,7 +57,11 @@ class Application
 
     public function __set($component, $object)
     {
-        $this->_ci->{$component} = $object;
+        if ($component == '_ci') {
+            $this->_ci = $object;
+        } else {
+            $this->_ci->{$component} = $object;
+        }
     }
 
     public function setSwooleRequest(SwooleHttpRequest $request)
@@ -82,7 +90,7 @@ class Application
                 $_SERVER['HTTP_X_REQUESTED_WITH'] = $this->request->header['x-requested-with'];
             } else {
                 $_SERVER['HTTP_X_REQUESTED_WITH'] = '';
-            }            
+            }
         }
 
         if (isset($this->request->get)) {
@@ -103,9 +111,9 @@ class Application
             }
         }
 
-        $this->uri    = new URI;
         $this->load   = new Loader;
         $this->router = new Router;
+        $this->uri    = new URI;
 
         return $this;
     }
@@ -120,7 +128,7 @@ class Application
 
         $RTR = $this->router;
 
-        $URI = $this->uri;
+        $URI = $this->router->uri;
 
         $e404   = false;
         $class  = ucfirst($RTR->class);
@@ -181,11 +189,7 @@ class Application
                     2 => $method,
                 );
             } else {
-                if (ENVIRONMENT == 'production') {
-                    show_404($RTR->directory . $class . '/' . $method);
-                } else {
-                    throw new \RuntimeException('Controller ' . $class . ' not found.');
-                }
+                show_404($RTR->directory . $class . '/' . $method);
             }
         }
 
@@ -198,14 +202,7 @@ class Application
         // Mark a start point so we can benchmark the controller
         $this->benchmark->mark('controller_execution_time_( ' . $class . ' / ' . $method . ' )_start');
 
-        $request  = $this->request;
-        $response = $this->response;
-
         $CI = new $class;
-
-        $CI->response = $response;
-
-        $CI->request = $request;
 
         $this->hooks->call_hook('post_controller_constructor');
 
