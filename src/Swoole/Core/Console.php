@@ -8,6 +8,10 @@ class Console extends Controller
 {
     public function command($config = [])
     {
+        $EXT = &load_class('Hooks', 'core');
+
+        $EXT->call_hook('pre_controller');
+
         try {
             $console = new ConsoleApplication(
                 $config['name'],
