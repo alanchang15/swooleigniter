@@ -160,6 +160,8 @@ if (!function_exists('get_instance')) {
 $charset = strtoupper(config_item('charset'));
 ini_set('default_charset', $charset);
 
+date_default_timezone_set('Asia/Taipei');
+
 if (extension_loaded('mbstring')) {
     define('MB_ENABLED', true);
     @ini_set('mbstring.internal_encoding', $charset);
