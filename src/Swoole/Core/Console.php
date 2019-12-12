@@ -10,6 +10,8 @@ class Console extends Controller
     {
         $EXT = &load_class('Hooks', 'core');
 
+        $EXT->call_hook('pre_system');
+
         $EXT->call_hook('pre_controller');
 
         try {
